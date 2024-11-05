@@ -12,7 +12,6 @@ import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import { login } from '../redux/user';
 import queryString from 'query-string';
-
    
 import {
   getAuthLogin,
@@ -27,39 +26,41 @@ function App() {
   const [revokedServices, setrevokedServices] = useState([]);
   const [recentServices, setRecentServices] = useState([]);
   const [recentRevokedServices, setRecentRevokedServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [userId, setUserId] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [mbrMngId, setMbrMngId] = useState(null);
   const dispatch = useDispatch()   
-  const userStore = useSelector((state) => state.user.value)
   const [location, setLocation] = useState({ ...window.location });
-  // const [searchParams, setSearchParams] = useSearchParams();
   
-  
-  const  auth = async () => {   
-     const auth = await getAuthLogin(userId)
-     //  const auth = null
-     console.log(">>>>>>>>>>>>>>>>>> auth", userId, auth)
-     if(!auth){
-        alert("사용자 정보가 존재하지 않습니다.")
-        return false
-     }
-     dispatch(login(auth))  
-     setMbrMngId(auth.mbrMngId)
-     return true
+  const  auth = async (id) => {   
+    setLoading(true);
+    try { 
+      const auth = await getAuthLogin(id)
+      //  const auth = null
+      if(!auth){
+          alert("사용자 정보가 존재하지 않습니다.")
+          return false
+      }
+      dispatch(login(auth))  
+      setMbrMngId(auth.mbrMngId)
+    } catch (error) {
+      console.error("데이터 불러오기 중 오류 발생:", error);
+    } finally {
+      setLoading(false);
+    }   
+    return true
   }
   
-  useEffect(() => {   
-    if(_.isEmpty(mbrMngId)){      
-      const parsed = queryString.parse(location.search)
-      const {id} = parsed
-      setUserId(id)      
-      auth()
+  useEffect(() => {  
+    const parsed = queryString.parse(location.search)
+    const {id} = parsed  
+    if(_.isEmpty(mbrMngId) && !_.isEmpty(id)){      
+      auth(id)
     }
+
     const fetchData = async () => {      
       setLoading(true);
       try {        
-        console.log(">>>>>>>>>>>>>>>>>> mbrMngId", mbrMngId)
+        // console.log(">>>>>>>>>>>>>>>>>> mbrMngId", mbrMngId)
         //const id = "AL202401010000000001"     
         const [active, revoked, recent, recentRevoked] = await Promise.all([
            getActiveServices(mbrMngId),
@@ -112,10 +113,10 @@ function App() {
       }
     };
     if(!_.isEmpty(mbrMngId)) fetchData();
-  }, [userId, mbrMngId]);
-  console.log("recentRevokedServices", recentRevokedServices);
-  console.log("revokedServices", revokedServices);
-  if(_.isEmpty(userStore.mbrMngId)) {
+  }, [mbrMngId]);
+  // console.log("recentRevokedServices", recentRevokedServices);
+  // console.log("revokedServices", revokedServices);
+  if(_.isEmpty(mbrMngId)) {
     return <div></div>;
   }   
 
