@@ -1,0 +1,193 @@
+.card-slider-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: var(--spacing-large);
+  /* padding: 0px 20px; */
+}
+
+.revoke-card-slider-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #f4f6fa;
+  padding: 30px 40px;
+}
+
+.card-slider-list-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.chart-card-main-title span {
+  color: #3275fd;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 최소 300px */
+  grid-gap: 2rem;
+  width: 100%;
+  /* max-width 대신 width: 100% */
+  /* max-width: 1040px; */
+  margin: 0 auto;
+  /* justify-content: center; */
+}
+.card-grid.isRevoked {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  /* justify-content: center; */
+}
+
+/* 카드 그리드 - 데스크탑 (1440px 이하) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+@media (max-width: 1292px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2열로 설정 */
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr; /* 모바일에서는 1열 */
+  }
+}
+
+/* 태블릿 화면 (768px 이하) */
+
+@media (max-width: 567px) {
+  .card-grid {
+    display: none !important; /* 모바일에서 grid layout을 비활성화 */
+  }
+}
+/* @media (max-width: 576px) {
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    
+  }
+} */
+
+.filter-toolbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.filter-left-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+}
+.filter-right-container {
+  display: flex;
+  gap: 16px;
+}
+
+.filter-view-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: var(--spacing-small) var(--spacing-medium);
+  color: var(--color-highlight);
+  border-radius: var(--button-radius);
+  background: var(--color-light);
+  gap: var(--spacing-small);
+}
+
+.filter-total {
+  display: flex;
+  gap: 4px;
+}
+
+.filter-total span {
+  color: #3275fd;
+  font-weight: 600;
+}
+
+.card-slider-title {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text);
+  font-size: var(--font-subtitle);
+  font-weight: 600;
+  gap: var(--spacing-small);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* justify-content: space-between;
+  align-items: center; */
+}
+
+.pagination-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 120px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2px 16px;
+  color: #fff;
+}
+
+.pagination button {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  /* padding: 2px 8px; */
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.pagination div {
+  display: flex;
+  margin: 0 10px;
+  font-size: 16px;
+  gap: 4px;
+}
+
+.pagination span {
+  opacity: 0.7;
+  margin-right: 4px;
+}
+
+/* 8개를 선택했을 때, 두 줄로 배치 */
+/* .card-grid.show-8 {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+} */
+
+/* 미디어 쿼리 - 태블릿 (기본적으로 2개씩 표시) */
+/* @media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .card-grid.show-8 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+  }
+  .card-slider-container {
+    gap: var(--spacing-medium);
+  }
+} */

@@ -1,0 +1,9 @@
+.label-conatiner {
+  display: flex;
+  width: 100%;
+}
+
+.label-title {
+  display: flex;
+  text-align: center;
+}

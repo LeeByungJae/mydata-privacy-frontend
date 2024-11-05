@@ -1,0 +1,149 @@
+:root {
+  /* PC용 폰트 크기 */
+  --font-2max-title: 24px;
+  --font-max-title: 20px;
+  --font-title: 18px;
+  --font-subtitle: 16px;
+  --font-body: 14px;
+  --font-small: 13px;
+  --font-xs: 11px;
+  --font-xxs: 10px;
+  /* 색상 팔레트 */
+  --color-primary: #3275fd;
+  --color-secondary: #6c757d;
+  --color-muted: #96a0b5;
+  --color-background: #f4f6fa;
+  --color-text: #232838;
+  --color-border: #1c1111;
+  --color-highlight: #3275fd;
+  --color-light: #ebf2ff;
+  --color-danger: #dc3545;
+
+  /* 공통 간격 */
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+
+  /* 버튼 크기 */
+  --button-padding: 10px 14px;
+  --button-radius: 8px;
+
+  /* 그림자 */
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --dropdown-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* 모달 */
+  --modal-width: 640px;
+  --modal-padding: 28px;
+}
+* {
+  box-sizing: border-box;
+  font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo",
+    "Malgun Gothic", Arial, sans-serif !important;
+  border: none !important;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+p,
+li,
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6, */
+ul {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+ul {
+  padding-left: 15px !important;
+  list-style-position: outside !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 버튼 스타일 */
+/* .button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: var(--font-body);
+  font-weight: 600;
+  padding: var(--button-padding);
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  width: 50%;
+}
+
+.button-flip-default {
+  background: var(--color-light);
+  color: var(--color-text);
+}
+
+.button-blue-default {
+  background: var(--color-primary);
+  color: white;
+}
+
+.button-disabled {
+  background: #eceef2;
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+.button img {
+  width: 1em;
+  height: 1em;
+  margin-right: 2px;
+  display: inline-block;
+} */
+
+li {
+  /* list-style-position: inside; 리스트 아이템을 내부로 이동 */
+  list-style-type: disc;
+  padding-left: 5px !important;
+}
+
+li::marker {
+  color: var(--color-muted);
+}
+
+/* 모바일 및 태블릿용 폰트 크기 */
+@media (max-width: 1024px) {
+  :root {
+    --font-title: 18px;
+    --font-subtitle: 16px;
+    /* --font-highlight: 14px; */
+    --font-body: 15px;
+    --font-small: 13px;
+    --font-xs: 12px;
+    --font-xxs: 11px;
+  }
+}
+
+/* 모바일 (최대 576px) */
+/* @media (max-width: 576px) {
+  :root {
+    --font-title: 16px;
+    --font-subtitle: 14px;
+    --font-highlight: 13px;
+    --font-body: 12px;
+    --font-small: 11px;
+    --font-xs: 10px;
+  }
+} */

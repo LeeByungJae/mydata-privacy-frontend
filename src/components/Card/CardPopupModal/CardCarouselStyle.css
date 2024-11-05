@@ -1,0 +1,325 @@
+.provider-wrapper {
+  /* display: flex; */
+  /* flex-direction: column; */
+
+  width: 100%;
+  /* overflow: hidden; */
+}
+.card-carousel-container {
+  width: 100%;
+  /* height: 400px; */
+  overflow: hidden;
+  padding: 30px 0px 40px 0px !important;
+  overflow: visible;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding-bottom: 20px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.provider-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* gap: 12px; */
+  flex-shrink: 0;
+  /* width: 232px; */
+  /* transition: transform 0.5s ease-in-out; */
+  /* opacity: 0.6; */
+  /* position: relative; */
+  margin-bottom: 30px;
+}
+
+.provider-detail {
+  display: flex;
+  width: 250px;
+  height: 180px;
+  background: #eceef2;
+  flex-direction: column;
+  justify-content: center;
+
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.provider-name-container {
+  color: #020202;
+  text-align: center;
+  font-size: var(--font-body);
+  font-weight: 600;
+  /* margin-bottom: 6px; */
+}
+.provider-name-container span {
+  color: #3275fd;
+  font-size: var(--font-small);
+}
+.provider-item {
+  white-space: normal;
+  /* word-break: break-word; */
+  overflow-wrap: break-word;
+  /* color: #5d6982; */
+  /* font-size: var(--font-body);
+  font-weight: 400; */
+}
+
+.swiper-slide .provider-container {
+  opacity: 0.5;
+}
+.swiper-slide-active .provider-container {
+  opacity: 1; /* 강조된 슬라이드 불투명도 */
+  transform: scale(1.25);
+  font-weight: 500;
+  font-size: var(--font-body);
+  color: #fff;
+  overflow: visible;
+  /* box-shadow: 6px 8px 6px 0px rgba(0, 0, 0, 0.08); */
+}
+
+.swiper-slide-active .provider-container .provider-detail {
+  background: #3275fd;
+  box-shadow: 6px 8px 6px 0px rgba(0, 0, 0, 0.08);
+}
+
+.slider-controler {
+  display: flex;
+  justify-content: space-between;
+}
+.slider-controler .slider-arrow {
+  background: rgba(0, 0, 0, 0.2);
+  width: 56px;
+  height: 80px;
+  border-radius: 5px;
+  /* filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1)); */
+  cursor: pointer;
+}
+/* 호버 효과 */
+.slider-controler .slider-arrow:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* .swiper-pagination {
+  position: relative;
+  width: 15rem !important;
+  bottom: 1rem;
+  display: flex;
+  justify-content: center;
+} */
+
+.slide-pagination {
+  margin-top: 16px;
+  font-size: var(--font-body);
+  font-weight: bold;
+  color: #5d6982;
+  text-align: center;
+}
+
+/* CardCarouselStyle.css */
+
+/* .swiper-container {
+  width: 100%;
+  height: 700px;
+  overflow: visible;
+  padding: 20px 10px;
+} */
+/* .card-carousel-container .swiper_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: visible;
+  padding: 0 40px;
+}
+.card-carousel-container .swiper-coverflow .swiper-slide {
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+.swiper-slide {
+  height: 200px;
+  width: 200px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+} */
+/* 
+.swiper-slide-visible {
+  display: flex;
+  background-color: transparent;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+} */
+
+/* .swiper-slide-fully-visible {
+  height: 200px;
+  width: 500px;
+} */
+
+/* .swiper-slide-active {
+  transform: scale(1.25) !important;
+  opacity: 1;
+}
+
+.swiper-slide-active .provider-detail {
+  background-color: #3275fd;
+  color: #f4f4f4;
+}
+.slider-controler {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.provider-title {
+  text-align: center;
+  font-size: var(--font-body);
+  font-weight: 600;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.provider-title span {
+  color: #3275fd;
+  font-size: var(--font-small);
+}
+
+.provider-detail {
+  background: #f4f4f4;
+  border-radius: 12px;
+  display: flex;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  height: 160px;
+  max-width: 200px;
+}
+
+.provider-detail-list {
+  display: flex;
+  flex-direction: column;
+  padding: 30px !important;
+  gap: 4px;
+} */
+.swiper-button-prev,
+.swiper-button-next {
+  font-size: 24px;
+  border-radius: 4px;
+  padding: 20px 15px;
+  background-color: rgba(50, 50, 50, 0.3); /* 기본 상태: 연한 색상 */
+  transition: background-color 0.3s ease; /* 색상 변경 애니메이션 */
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: rgba(50, 50, 50, 0.8); /* 호버 상태: 진한 색상 */
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  color: #fff;
+  font-size: 20px !important;
+}
+
+/* 스크롤바 전체 스타일 */
+.provider-detail::-webkit-scrollbar {
+  width: 6px; /* 스크롤바 너비 설정 */
+}
+
+/* 스크롤바 트랙 (배경) */
+.provider-detail::-webkit-scrollbar-track {
+  background: transparent; /* 투명 배경 */
+}
+
+/* 스크롤바 핸들 (움직이는 부분) */
+.provider-detail::-webkit-scrollbar-thumb {
+  background-color: #cbd2e1;
+  border-radius: 3px; /* 둥근 모서리 */
+}
+
+/* 스크롤바 트랙에 여백 추가 */
+.provider-detail::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* 스크롤바 트랙의 상단과 하단에 여백을 두기 위해 버튼 추가 */
+.provider-detail::-webkit-scrollbar-button:vertical:start:increment,
+.provider-detail::-webkit-scrollbar-button:vertical:start:decrement {
+  display: block;
+  height: 5px; /* 여백의 높이 설정 */
+}
+
+.provider-detail::-webkit-scrollbar-button:vertical:end:increment,
+.provider-detail::-webkit-scrollbar-button:vertical:end:decrement {
+  display: block;
+  height: 50px; /* 여백의 높이 설정 */
+}
+/* 스크롤바 핸들 호버 시 스타일 */
+/* .provider-detail::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(50, 117, 253, 1); 
+} */
+
+/* 태블릿용 스타일 */
+@media (max-width: 1024px) {
+  .provider-detail {
+    font-size: 14px;
+    height: 160px;
+    min-width: 180px;
+    /* padding: 10px !important; */
+  }
+
+  .provider-title {
+    font-size: var(--font-small);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .provider-title span {
+    color: #3275fd;
+    font-size: var(--font-small);
+  }
+}
+/* 모바일용 스타일 */
+@media (max-width: 576px) {
+  .provider-title {
+    text-align: center;
+    font-size: var(--font-small);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .swiper-slide {
+    height: 200px;
+    width: 200px;
+  }
+
+  .provider-detail {
+    font-size: 14px;
+
+    max-width: 180px; /* 슬라이드가 너무 커지지 않도록 최대 너비 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
+  }
+  .swiper-button-prev,
+  .swiper-button-next,
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    display: none !important; /* 모바일에서는 버튼 숨김 */
+  }
+}

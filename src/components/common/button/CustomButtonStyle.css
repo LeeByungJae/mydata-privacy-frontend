@@ -1,0 +1,85 @@
+.custom-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: var(--font-body);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  font-weight: 600;
+}
+
+/* 기본 파란색 버튼 스타일 */
+.custom-primary-btn {
+  background-color: #3275fd;
+  color: #fff;
+  border: 2px solid #3275fd;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-primary-btn:hover {
+  background-color: #265ed7;
+}
+
+/* 제3자 제공현황 버튼 스타일 */
+/* .custom-secondary-btn {
+  background-color: #f4f6fa; 연한 배경색 설정
+
+  color: var(--color-text);
+  border: 1.5px solid #3275fd;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+} */
+
+/* 제3자 제공현황 버튼 스타일 */
+.custom-btn.custom-secondary-btn {
+  background-color: var(
+    --Gray-100_BG,
+    #f4f6fa
+  ) !important; /* 연한 배경색 설정 */
+
+  color: var(--Gray-900, #292b32);
+  /* border: 1.5px solid #3275fd; */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 제3자 제공현황 버튼 호버 효과 */
+.custom-secondary-btn:hover {
+  background-color: #e0e8f6 !important;
+  /* color: #3275fd; */
+  color: var(--color-text);
+}
+.custom-secondary-btn:active {
+  background-color: #e0e8f6 !important;
+  /* color: #3275fd !important; */
+  color: var(--color-text) !important;
+}
+
+/* 비활성화 버튼 스타일 */
+.custom-disabled-btn {
+  /* background-color: #f0f0f0; */
+  background: var(--Gray-200, #eceef2);
+  color: var(--Gray-700, #96a0b5);
+  border: 2px solid #d0d0d0;
+  cursor: not-allowed !important;
+}
+
+/* 미디어 쿼리 - 태블릿 (너비 768px 이하) */
+@media (max-width: 1024px) {
+  .custom-btn {
+    padding: 8px 14px;
+  }
+}
+
+/* 미디어 쿼리 - 모바일 (너비 576px 이하) */
+@media (max-width: 576px) {
+  .custom-btn {
+    padding: 6px 12px;
+  }
+}
+
+.view-all-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.custom-btn.view-all {
+  width: 70%;
+}

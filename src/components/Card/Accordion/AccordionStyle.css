@@ -1,0 +1,110 @@
+/* Accordion Container */
+.custom-accordion-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 140px; /* 원하는 최대 높이 설정 */
+  overflow-y: auto; /* 내부 스크롤링 활성화 */
+  flex-grow: 1;
+  background: transparent; /* 배경색 투명 */
+  color: #fff;
+  border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Accordion Item */
+.custom-accordion-item {
+  background: transparent; /* 배경색 투명 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important; /* 아이템 간 구분선 */
+}
+
+/* Accordion Button */
+
+.accordion-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #3275fd;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+
+.custom-accordion-container .accordion-button:not(.collapsed) {
+  background-color: #3275fd; /* 원하는 배경색으로 설정 */
+  color: #fff; /* 텍스트 색상 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+  /* border-collapse: collapse; */
+}
+
+/* 기본 아코디언 아이콘 색상 변경 */
+.custom-accordion-container .accordion-button::after {
+  filter: invert(100%); /* 색상을 반전시켜 흰색으로 변경 */
+}
+
+/* Accordion Body */
+.custom-accordion-container .accordion-body {
+  color: #eceef2;
+  padding: 0px;
+}
+
+/* Table Style */
+.custom-accordion-container .provider-table-container {
+  max-height: 110px;
+  overflow-y: auto;
+}
+
+.custom-accordion-container .provider-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+  /* border-top: 1px solid rgba(255, 255, 255, 0.4); */
+  font-size: 13px;
+}
+
+.custom-accordion-container .provider-table th,
+.custom-accordion-container .provider-table td {
+  border-bottom: 1px solid #fff;
+  padding: 4px 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.custom-accordion-container .provider-table th {
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Scrollbar Style */
+.provider-table-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* 스크롤바 스타일 */
+.custom-accordion-container::-webkit-scrollbar
+/* ,
+.provider-table-container::-webkit-scrollbar  */ {
+  width: 6px;
+  height: 10px;
+}
+
+.custom-accordion-container::-webkit-scrollbar-thumb
+/* ,
+.provider-table-container::-webkit-scrollbar-thumb  */ {
+  background-color: #cbd2e1;
+  border-radius: 1px;
+}
+
+/* 스크롤바 스타일 */
+.custom-accordion-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-accordion-container::-webkit-scrollbar-thumb {
+  background-color: #cbd2e1;
+}
+.provider-table th:first-child,
+.provider-table td:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.2) !important; /* 세로선 추가 */
+}

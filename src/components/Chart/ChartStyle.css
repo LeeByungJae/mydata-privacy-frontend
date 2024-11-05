@@ -1,0 +1,96 @@
+/* 기본 포커스 outline 제거 */
+:focus {
+  outline: none;
+}
+
+/* 커스텀 포커스 스타일 적용 */
+.pie-chart-sector:focus {
+  outline: 2px solid #3275fd; /* 원하는 색상으로 outline 설정 */
+}
+
+.chart-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* 카드의 내용이 고르게 배치되도록 설정 */
+  align-items: center;
+
+  /* background: #fff; */
+  /* box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.08);*/
+  border: none;
+  gap: 16px;
+  margin-bottom: 20px;
+  /* transition: transform 0.5s; */
+}
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #fff;
+  border: 3px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 25px 0px 10px 0px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.chat-content-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+  gap: 16px;
+}
+
+.chart-title {
+  gap: 5px;
+  font-size: var(--font-subtitle);
+  font-weight: 500;
+  position: absolute;
+  color: var(--font-title);
+  top: -20px;
+  left: 20px;
+  padding: 8px 20px;
+  background: #fff;
+  /* background: #fff; */
+  border-radius: 6px;
+  border: 3px solid #cacaca;
+
+  /* border-bottom: 3px solid #282727; */
+}
+
+.pie-active-text {
+  font-size: var(--font-subtitle);
+  fill: var(--color-text);
+  font-weight: 600;
+}
+
+.pie-text {
+  font-size: var(--font-subtitle);
+  fill: var(--color-text);
+}
+
+.pie-active-sub-text {
+  font-size: var(--font-subtitle);
+  fill: var(--color-secondary);
+  font-weight: 600;
+}
+
+.pie-sub-text {
+  fill: var(--color-muted);
+}
+
+.pie-center-text {
+  font-size: var(--font-title);
+  font-weight: 600;
+}
+
+.chart-pie {
+  margin: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
