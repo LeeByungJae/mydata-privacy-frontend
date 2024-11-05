@@ -3,7 +3,7 @@ import "./CardStyle.css";
 import Accordion from "./Accordion/Accordion";
 
 export default function CardBack({ data, title, loading }) {
-  if (!data || !data.consents || data.consents.length === 0) {
+  if (!data || data.length === 0) {
     return <div className="no-data-text">제3자 제공 정보가 없습니다.</div>;
   }
 
@@ -15,7 +15,7 @@ export default function CardBack({ data, title, loading }) {
       </div>
       <div className="card-content-container">
         {/* Accordion 컴포넌트에 데이터 전달 */}
-        <Accordion data_providers={data.consents} />
+        <Accordion data_providers={data} />
       </div>
     </div>
   );

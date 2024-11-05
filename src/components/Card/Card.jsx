@@ -29,7 +29,7 @@ export default function Card({ card, isRevoked }) {
       const consentId = card.share_requests[0].consent_id;
       setLoadingData(true);
       try {
-        const data = await getServiceThirdPartyDetails(consentId);
+        const data = await getServiceThirdPartyDetails(consentId);        
         setThirdPartyData(data);
       } catch (error) {
         console.error("제3자 제공 데이터 조회 중 오류 발생:", error);
@@ -76,6 +76,7 @@ export default function Card({ card, isRevoked }) {
             serviceProvider={card.serviceProvider}
             dataProviders={card.data_providers}
             serviceCode={card.service_code}
+            fld_nm={card.fld_nm}
             lastConsentDate={formatDate(card.last_consent_date)}
             onFlip={() => setIsFlipped(!isFlipped)}
             onCardClick={handleShowModal}

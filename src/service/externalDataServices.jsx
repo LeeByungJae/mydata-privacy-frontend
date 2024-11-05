@@ -1,20 +1,51 @@
 import axios from "axios";
-axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
-
-export const getActiveServices = async () => {
+import { useDispatch } from 'react-redux'
+// axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
+export const getAuthLogin = async (id) => {
   try {
-    const response = await axios.get(`/active_services`, {});
-    return response.data;
+    const requestBody = {id}
+    const response = await axios.post(`/auth/login`, requestBody);
+    const {data} = response
+    const {resultVO} = data
+
+   return resultVO;
   } catch (error) {
     console.error("활성화된 서비스 조회 중 오류 발생:", error);
     return [];
   }
 };
 
-export const getrevokedServices = async () => {
+export const postRetract = async (requestBody) => {
   try {
-    const response = await axios.get(`/revoked_data_providers`, {});
-    return response.data;
+    const response = await axios.post(`/api/v1/privacy/retract`, requestBody);
+    const {data} = response
+    return data;
+  } catch (error) {
+    console.error("활성화된 서비스 조회 중 오류 발생:", error);
+    return [];
+  }
+};
+
+export const getActiveServices = async (id) => {
+  try {
+    const response = await axios.get("/api/v1/privacy/requestinfo/" + id);
+    const {data} = response    
+    const {results} = data
+    const {transferRequestDtos} = results
+    return transferRequestDtos;
+  } catch (error) {
+    console.error("활성화된 서비스 조회 중 오류 발생:", error);
+    return [];
+  }
+};
+
+export const getrevokedServices = async (id) => {
+  try {
+    const response = await axios.get("/api/v1/privacy/revokedinfo/" + id);
+    const {data} = response
+    const {results} = data
+    const {transferRequestDtos} = results
+    return transferRequestDtos;
   } catch (error) {
     console.error("취소된 데이터 제공자 조회 중 오류 발생:", error);
     return [];
@@ -24,11 +55,16 @@ export const getrevokedServices = async () => {
 // 제3자 제공
 export const getServiceThirdPartyDetails = async (requestMsgId) => {
   try {
+    const param = {
+      "rsognCd": "TRAAAAB10001",
+      "trsmRqustfId": "00004"
+    }
     const response = await axios.get(
-      `/service_third_party_details/${requestMsgId}`,
-      {}
+      `/api/v1/privacy/third-serve`, {param}
     );
-    return response.data;
+    const {data} = response
+    const {results} = data
+    return results;
   } catch (error) {
     console.error(
       `서비스 ID ${requestMsgId}의 제3자 세부 정보 조회 중 오류 발생:`,
@@ -38,9 +74,9 @@ export const getServiceThirdPartyDetails = async (requestMsgId) => {
   }
 };
 
-export const getRecentServices = async () => {
+export const getRecentServices = async (id) => {
   try {
-    const activeServices = await getActiveServices();
+    const activeServices = await getActiveServices(id);
     const currentDate = new Date();
     const recentServices = activeServices.filter((service) => {
       const lastConsentDate = new Date(
@@ -64,9 +100,9 @@ export const getRecentServices = async () => {
 };
 
 // 전일 30일 기준 철회내역 조회
-export const getRecentRevokedServices = async () => {
+export const getRecentRevokedServices = async (id) => {
   try {
-    const revokedServices = await getrevokedServices();
+    const revokedServices = await getrevokedServices(id);
     const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() - 1); // 어제 날짜로 설정
 
@@ -88,3 +124,4 @@ export const getRecentRevokedServices = async () => {
     return [];
   }
 };
+

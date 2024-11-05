@@ -31,9 +31,9 @@ export default function Accordion({ data_providers }) {
         <AccordionItem
           key={index}
           eventKey={index.toString()}
-          title={item.prov_consent_nm}
-          recipient={item.recipient}
-          sharedData={item.sharedData}
+          title={item.provConsentNm}
+          recipient={item.consentRcvNm}
+          sharedData={item.provConsentAsset}
           isOpen={activeIndex === index}
           onClick={() => toggleAccordion(index)}
         />

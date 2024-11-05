@@ -7,6 +7,9 @@ import LiIcon from "../../../assets/li-icon.svg";
 import { formatDate } from "../../../utils/utils";
 import CardCarousel from "./CardCarousel";
 import CustomButton from "../../common/button/CustomButton";
+import { postRetract } from "../../../service/externalDataServices";
+import { useSelector } from 'react-redux'
+
 
 export default function CardDetailModal({ card, onClose, show, serviceTag }) {
   const { title, last_consent_date, data_providers = [], service_code } = card;
@@ -16,6 +19,37 @@ export default function CardDetailModal({ card, onClose, show, serviceTag }) {
   const [submittingStates, setSubmittingStates] = useState({});
   const [completedStates, setCompletedStates] = useState({});
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadingData, setLoadingData] = useState(false);
+  const user = useSelector((state) => state.user.value)
+
+   // 뒤집기 버튼 클릭 시 제3자 제공 데이터 조회
+   const handleRetract = async () => {
+      setLoadingData(true);
+      try {
+        //  trsmRqustfId : 상세 trsm_rqustf_id      
+        //infoTrsmInstCd : 상세 data_provider_code
+        //certCi : 상위 서비스 cert_ci
+        //rsognCd : 상위서비스 rsogn_cd
+        //infoRcptnSrvcCd : 상위 서비스 service_code
+        const {cert_ci:certCi, rsogn_cd:rsognCd, service_code:infoRcptnSrvcCd, data_providers} = card
+        const dataProvider = data_providers[currentIndex]
+        const {trsm_rqustf_id:trsmRqustfId, data_provider_code: infoTrsmInstCd } = dataProvider        
+        const {mbrMngId} = user
+        const requestBody = {
+          trsmRqustfId, //전송요구서 ID (test data 중복 X)
+          certCi, //사용자CI
+          rsognCd, //중계전문기관코드
+          infoTrsmInstCd, //정보전송기관코드
+          infoRcptnSrvcCd,//정보수신서비스코드,
+          mbrMngId//수정자아이디
+        }
+        await postRetract(requestBody)        
+      } catch (error) {
+        console.error("철회하기 처리 중 오류 발생:", error);
+      } finally {
+        setLoadingData(false);
+      }
+  };
 
   const generateStorageKey = (prefix, serviceCode, provider) => {
     return `${prefix}_${serviceCode}_${provider}`;
@@ -60,10 +94,11 @@ export default function CardDetailModal({ card, onClose, show, serviceTag }) {
     setIsChecked(agree);
     const provider = card.data_providers[currentIndex]?.provider;
     const key = generateStorageKey("isChecked", card.service_code, provider);
-    localStorage.setItem(key, JSON.stringify(agree));
+    localStorage.setItem(key, JSON.stringify(agree));   
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    await handleRetract()
     const provider = card.data_providers[currentIndex].provider;
     setSubmittingStates((prev) => ({ ...prev, [provider]: true }));
     const submittingKey = generateStorageKey(
@@ -72,6 +107,7 @@ export default function CardDetailModal({ card, onClose, show, serviceTag }) {
       provider
     );
     localStorage.setItem(submittingKey, true);
+    alert("전송요구 철회 처리를 완료했습니다.")    
   };
 
   const handleOnClose = () => {

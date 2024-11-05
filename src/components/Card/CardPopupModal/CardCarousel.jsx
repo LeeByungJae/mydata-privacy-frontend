@@ -13,7 +13,7 @@ export default function CardCarousel({
   currentIndex,
 }) {
   if (!providers || providers.length === 0) return null;
-
+  
   return (
     <section className="provider-wrapper">
       <Swiper

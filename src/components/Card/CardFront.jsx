@@ -7,6 +7,7 @@ export default function CardFront({
   serviceProvider,
   dataProviders = [],
   serviceCode,
+  fld_nm,
   date,
   onFlip,
   onCardClick,
@@ -57,7 +58,7 @@ export default function CardFront({
         </ul>
         <div className="card-tag-container">
           {/* 서비스 코드 앞글자 2개에 따라 태그가 변화함 */}
-          <div className="card-tag">#{serviceTag}</div>
+          <div className="card-tag">#{fld_nm}</div>
           {serviceTag !== "금융" && serviceTag !== "공공" && (
             <>
               <div className="card-tag ">#철회 가능</div>

@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash"; 
 import { Accordion as BootstrapAccordion } from "react-bootstrap";
 import "./AccordionStyle.css";
 
@@ -9,9 +10,11 @@ export default function AccordionItem({
   eventKey,
 }) {
   const trimmedTitle = title.split(/를 위한|을 위한/)[0];
-  const sharedDataText = Array.isArray(sharedData)
-    ? sharedData.join(", ")
-    : "전송 항목 없음";
+  // const sharedDataText = Array.isArray(sharedData)
+  //   ? sharedData.join(", ")
+  //   : "전송 항목 없음";
+  const sharedDataText = _.isEmpty(sharedData)
+       ? "전송 항목 없음" : sharedData
 
   return (
     <BootstrapAccordion.Item
