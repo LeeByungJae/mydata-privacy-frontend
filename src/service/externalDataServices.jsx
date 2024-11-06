@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch } from 'react-redux'
-// axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
 export const getAuthLogin = async (id) => {
   try {
     const requestBody = {id}
@@ -28,7 +28,7 @@ export const postRetract = async (requestBody) => {
 
 export const getActiveServices = async (id) => {
   try {
-    const response = await axios.get("/api/v1/privacy/requestinfo/" + id);
+    const response = await axios.get(`/api/v1/privacy/requestinfo/${id}`);
     const {data} = response    
     const {results} = data
     const {transferRequestDtos} = results
@@ -41,7 +41,7 @@ export const getActiveServices = async (id) => {
 
 export const getrevokedServices = async (id) => {
   try {
-    const response = await axios.get("/api/v1/privacy/revokedinfo/" + id);
+    const response = await axios.get(`/api/v1/privacy/revokedinfo/${id}`);
     const {data} = response
     const {results} = data
     const {transferRequestDtos} = results
@@ -53,11 +53,11 @@ export const getrevokedServices = async (id) => {
 };
 
 // 제3자 제공
-export const getServiceThirdPartyDetails = async (requestMsgId) => {
+export const getServiceThirdPartyDetails = async (rsognCd, trsmRqustfId) => {
   try {
     const param = {
-      "rsognCd": "TRAAAAB10001",
-      "trsmRqustfId": "00004"
+      rsognCd,
+      trsmRqustfId
     }
     const response = await axios.get(
       `/api/v1/privacy/third-serve`, {param}
