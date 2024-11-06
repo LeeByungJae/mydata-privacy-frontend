@@ -26,7 +26,11 @@ export default function Card({ card, isRevoked }) {
   // 뒤집기 버튼 클릭 시 제3자 제공 데이터 조회
   const handleFlip = async () => {
     if (!isFlipped && card.share_requests?.length > 0) {
-      const consentId = card.share_requests[0].consent_id;
+      //trsmRqustfId : 상세 trsm_rqustf_id
+      //rsognCd : 상위서비스 rsogn_cd
+      const {rsogn_cd:rsognCd, data_providers} = card
+      const dataProvider = data_providers[0]
+      const {trsm_rqustf_id:trsmRqustfId} = dataProvider
       setLoadingData(true);
       try {
         const data = await getServiceThirdPartyDetails(consentId);        
